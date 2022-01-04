@@ -1,0 +1,7 @@
+{
+  "name": "C-Football",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
