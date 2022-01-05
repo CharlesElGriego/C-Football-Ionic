@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Competitions</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid *ngIf="(competitions$ |async)?.count > 0">
+    <ion-row>
+      <ion-col
+        size-lg="3"
+        size-md="4"
+        size-sm="6"
+        size="12"
+        *ngFor="let competetition of (competitions$ |async).competitions; let i=index;"
+      >
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>{{competetition.name}}</ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
