@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>CompetionsResponse</ion-title>
+    <ion-title>Competitions</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,9 +15,17 @@
         *ngFor="let competition of (competitions$ |async).competitions; let i=index;"
       >
         <ion-card (click)="goToTeamsByCompetition(competition.id)">
-          <ion-card-header>
-            <ion-card-subtitle>{{competition.name}}</ion-card-subtitle>
-          </ion-card-header>
+          <ion-item>
+            <ion-avatar slot="start">
+              <img
+                [src]="competition.area.ensignUrl? competition.area.ensignUrl : 'https://upload.wikimedia.org/wikipedia/commons/d/d3/Soccerball.svg'"
+              />
+            </ion-avatar>
+            <ion-label>
+              <h3>{{competition.name}}</h3>
+              <p>{{competition.currentSeason.startDate| date}} - {{competition.currentSeason.endDate| date}}</p>
+            </ion-label>
+          </ion-item>
         </ion-card>
       </ion-col>
     </ion-row>
