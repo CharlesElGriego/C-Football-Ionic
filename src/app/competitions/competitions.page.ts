@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { sortByName } from '../shared/helpers/array-helper';
-import { Competitions } from '../shared/interfaces/competitions.interface';
+import { CompetionsResponse } from '../shared/interfaces/responses/competitions-response.interface';
 import { FootballApiService } from '../shared/services/football-api.service';
 @Component({
   selector: 'app-competitions',
@@ -10,9 +10,9 @@ import { FootballApiService } from '../shared/services/football-api.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CompetitionsPage implements OnInit {
-  competitions$ = new BehaviorSubject<Competitions>(null);
+  competitions$ = new BehaviorSubject<CompetionsResponse>(null);
 
-  constructor(private footballApiService: FootballApiService) {}
+  constructor(private footballApiService: FootballApiService, private router: Router) {}
 
   ngOnInit(): void {
     this.getCompetitions();
@@ -21,9 +21,12 @@ export class CompetitionsPage implements OnInit {
   //#region   Public Methods
   getCompetitions(): void {
     this.footballApiService.getCompetitions().subscribe((competitions) => {
-      competitions.competitions.sort(sortByName);
       this.competitions$.next(competitions);
     });
+  }
+
+  goToTeamsByCompetition(id: number) {
+    this.router.navigate(['teams/', id]);
   }
   //#endregion
 }
