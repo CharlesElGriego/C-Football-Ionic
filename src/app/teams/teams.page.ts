@@ -21,14 +21,16 @@ export class TeamsPage implements OnInit {
   }
 
   //#region   Public Methods
-  getTeamsByCompetition(id: number): void {
+  goToTeamDetails(id: number) {
+    this.router.navigate(['team-information/', id]);
+  }
+  //#endregion
+
+  //#region   Private Methods
+  private getTeamsByCompetition(id: number): void {
     this.footballApiService.getTeamsByCompetition(id).subscribe((teams) => {
       this.competition$.next(teams);
     });
-  }
-
-  goToTeamDetails(id: number) {
-    this.router.navigate(['team-information/', id]);
   }
   //#endregion
 }
