@@ -1,22 +1,14 @@
+import { Area } from './area.interface';
+import { Season } from './season.interface';
+
 export interface Competition {
   id: number;
-  area: {
-    id: number;
-    name: string;
-    countryCode: string;
-    ensignUrl: string;
-  };
+  area: Area;
   name: string;
   code: string;
   emblemUrl: string;
   plan: string;
-  currentSeason: {
-    id: number;
-    startDate: string;
-    endDate: string;
-    currentMatchday: number;
-    winner: string;
-  };
+  currentSeason: Season;
   numberOfAvailableSeasons: number;
   lastUpdated: string;
 }
