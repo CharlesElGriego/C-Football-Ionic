@@ -3,23 +3,34 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>teams</ion-title>
+    <ion-title>{{(competition$ |async)?.competition?.name}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid *ngIf="(teams$ |async)">
+  <ion-grid *ngIf="(competition$ |async)">
     <ion-row>
       <ion-col
         size-lg="3"
         size-md="4"
         size-sm="6"
         size="12"
-        *ngFor="let competition of (teams$ |async).teams; let i=index;"
+        *ngFor="let team of (competition$ |async).teams; let i=index;"
       >
-        <ion-card (click)="goToTeamDetails(competition.id)">
+        <ion-card (click)="goToTeamDetails(team.id)" class="teams__card">
+          <ion-item>
+            <ion-avatar slot="start">
+              <img
+                [src]="team.crestUrl? team.crestUrl : 'https://upload.wikimedia.org/wikipedia/commons/d/d3/Soccerball.svg'"
+              />
+            </ion-avatar>
+            <ion-label>
+              <h3>{{team.name}}</h3>
+            </ion-label>
+          </ion-item>
           <ion-card-header>
-            <ion-card-subtitle>{{competition.name}}</ion-card-subtitle>
+            <ion-card-subtitle>{{team.website}}</ion-card-subtitle>
+            <ion-card-title>{{team.venue}}</ion-card-title>
           </ion-card-header>
         </ion-card>
       </ion-col>

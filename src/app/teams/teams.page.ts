@@ -10,7 +10,7 @@ import { FootballApiService } from '../shared/services/football-api.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TeamsPage implements OnInit {
-  teams$ = new BehaviorSubject<TeamsByCompetitionResponse>(null);
+  competition$ = new BehaviorSubject<TeamsByCompetitionResponse>(null);
 
   constructor(private footballApiService: FootballApiService, private router: Router, private route: ActivatedRoute) {}
 
@@ -25,7 +25,7 @@ export class TeamsPage implements OnInit {
     this.footballApiService.getTeamsByCompetition(id).subscribe((teams) => {
       // teams.teams.sort(sortByName);
       console.log(teams);
-      this.teams$.next(teams);
+      this.competition$.next(teams);
     });
   }
 
