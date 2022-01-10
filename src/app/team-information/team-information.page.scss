@@ -1,0 +1,11 @@
+.team-info {
+  &__img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+  }
+  &__card {
+    padding-top: 20px;
+  }
+}

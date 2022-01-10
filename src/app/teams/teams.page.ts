@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { TeamsByCompetitionResponse } from '../shared/interfaces/responses/teamsByCompetiton-response.interface';
+import { Team } from '../shared/interfaces/team.interface';
 import { FootballApiService } from '../shared/services/football-api.service';
 @Component({
   selector: 'app-teams',
@@ -21,7 +22,8 @@ export class TeamsPage implements OnInit {
   }
 
   //#region   Public Methods
-  goToTeamDetails(id: number) {
+  goToTeamDetails(id: number, team: Team): void {
+    this.footballApiService.selectedTeam$.next(team);
     this.router.navigate(['team-information/', id]);
   }
   //#endregion

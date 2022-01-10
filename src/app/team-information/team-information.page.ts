@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
+import { TeamInformationResponse } from '../shared/interfaces/responses/teamInformationResponse.interface';
+import { FootballApiService } from '../shared/services/football-api.service';
 
 @Component({
   selector: 'app-team-information',
@@ -6,10 +10,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./team-information.page.scss'],
 })
 export class TeamInformationPage implements OnInit {
+  teamInfo$ = new BehaviorSubject<TeamInformationResponse>(null);
+  selectedTeam$ = this.footballApiService.selectedTeam$;
+  objectKeys = Object.keys;
+  constructor(private footballApiService: FootballApiService, private router: Router, private route: ActivatedRoute) {}
 
-  constructor() { }
-
-  ngOnInit() {
+  ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      this.getTeamInformation(params['id']);
+    });
   }
+  ngOnDestroy(): void {
+    this.footballApiService.selectedTeam$.next(null);
+  }
+  //#region   Public Methods
 
+  //#endregion
+
+  //#region   Private Methods
+  private getTeamInformation(id: number): void {
+    this.footballApiService.getTeamInfo(id).subscribe((team) => {
+      this.teamInfo$.next(team);
+    });
+  }
+  //#endregion
 }

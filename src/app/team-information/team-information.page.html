@@ -1,9 +1,45 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>team-information</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Team Information</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
+  <ion-card *ngIf="(teamInfo$ |async)">
+    <img
+      [src]=" (selectedTeam$|async)?.crestUrl ? (selectedTeam$|async).crestUrl: 'https://upload.wikimedia.org/wikipedia/commons/d/d3/Soccerball.svg'"
+      class="team-info__img"
+    />
+    <ion-card-header>
+      <ion-card-subtitle>{{(teamInfo$ |async).website}}</ion-card-subtitle>
+      <ion-card-title>{{(teamInfo$ |async)?.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label> </ion-label>
+    </ion-card-content>
+  </ion-card>
 
+  <ion-card *ngIf="(teamInfo$ |async)" class="team__card">
+    <ion-card-header>
+      <ion-card-title>Squad</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ng-container *ngFor="let item of (teamInfo$ |async).squadByPosition |keyvalue; let i=index;">
+        <ion-item-group>
+          <ion-item-divider>
+            <ion-label>{{item.key ===null ? 'Position Unknown' : item.key }}</ion-label>
+          </ion-item-divider>
+          <ul>
+            <li *ngFor="let player of  item.value ">
+              {{player.name}} {{player.nationality? '|| '+player.nationality : ''}}
+            </li>
+          </ul>
+        </ion-item-group>
+      </ng-container>
+      <ion-label *ngIf="(teamInfo$ |async).squad.length ===0">Squad information unavailable</ion-label>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
