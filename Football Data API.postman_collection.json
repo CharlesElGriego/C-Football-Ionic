@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "941082c3-d2d7-4aff-9b4b-4bfe64b15b34",
+		"name": "Football Data API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Competions by season",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{api-football}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.football-data.org/v2/competitions?plan=TIER_ONE",
+					"protocol": "https",
+					"host": [
+						"api",
+						"football-data",
+						"org"
+					],
+					"path": [
+						"v2",
+						"competitions"
+					],
+					"query": [
+						{
+							"key": "plan",
+							"value": "TIER_ONE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get teams by competions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{api-football}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://api.football-data.org/v2/competitions/2002/teams",
+					"protocol": "http",
+					"host": [
+						"api",
+						"football-data",
+						"org"
+					],
+					"path": [
+						"v2",
+						"competitions",
+						"2002",
+						"teams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Team info",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{api-football}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://api.football-data.org/v2/teams/57",
+					"protocol": "http",
+					"host": [
+						"api",
+						"football-data",
+						"org"
+					],
+					"path": [
+						"v2",
+						"teams",
+						"57"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
