@@ -23,8 +23,6 @@ export class TeamsPage implements OnInit {
   //#region   Public Methods
   getTeamsByCompetition(id: number): void {
     this.footballApiService.getTeamsByCompetition(id).subscribe((teams) => {
-      // teams.teams.sort(sortByName);
-      console.log(teams);
       this.competition$.next(teams);
     });
   }
