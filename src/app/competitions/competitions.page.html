@@ -14,7 +14,7 @@
         size="12"
         *ngFor="let competition of (competitions$ |async).competitions; let i=index;"
       >
-        <ion-card (click)="goToTeamsByCompetition(competition.id)">
+        <ion-card (click)="goToTeamsByCompetition(competition.id)" class="competitions__card">
           <ion-item>
             <ion-avatar slot="start">
               <img
