@@ -17,7 +17,7 @@
         size="12"
         *ngFor="let team of (competition$ |async).teams; let i=index;"
       >
-        <ion-card (click)="goToTeamDetails(team.id)" class="teams__card">
+        <ion-card class="teams__card">
           <ion-item>
             <ion-avatar slot="start">
               <img
@@ -27,6 +27,7 @@
             <ion-label>
               <h3>{{team.name}}</h3>
             </ion-label>
+            <ion-icon name="arrow-forward-outline" slot="end" (click)="goToTeamDetails(team.id)"> </ion-icon>
           </ion-item>
           <ion-card-header>
             <ion-card-subtitle>{{team.website}}</ion-card-subtitle>
