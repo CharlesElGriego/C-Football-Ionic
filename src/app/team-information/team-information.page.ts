@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { TeamInformationResponse } from '../shared/interfaces/responses/teamInformationResponse.interface';
@@ -8,6 +8,7 @@ import { FootballApiService } from '../shared/services/football-api.service';
   selector: 'app-team-information',
   templateUrl: './team-information.page.html',
   styleUrls: ['./team-information.page.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TeamInformationPage implements OnInit {
   teamInfo$ = new BehaviorSubject<TeamInformationResponse>(null);
