@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content fullscreen>
-  <ion-card *ngIf="(teamInfo$ |async)">
+  <ion-card *ngIf="(teamInfo$ |async)" class="team-info__card">
     <img
       [src]=" (selectedTeam$|async)?.crestUrl ? (selectedTeam$|async).crestUrl: 'https://upload.wikimedia.org/wikipedia/commons/d/d3/Soccerball.svg'"
       class="team-info__img"
@@ -22,7 +22,7 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card *ngIf="(teamInfo$ |async)" class="team__card">
+  <ion-card *ngIf="(teamInfo$ |async)">
     <ion-card-header>
       <ion-card-title>Squad</ion-card-title>
     </ion-card-header>
