@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { TeamInformationResponse } from '../shared/interfaces/responses/teamInformationResponse.interface';
 import { FootballApiService } from '../shared/services/football-api.service';
@@ -13,8 +13,7 @@ import { FootballApiService } from '../shared/services/football-api.service';
 export class TeamInformationPage implements OnInit {
   teamInfo$ = new BehaviorSubject<TeamInformationResponse>(null);
   selectedTeam$ = this.footballApiService.selectedTeam$;
-  objectKeys = Object.keys;
-  constructor(private footballApiService: FootballApiService, private router: Router, private route: ActivatedRoute) {}
+  constructor(private footballApiService: FootballApiService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -24,9 +23,6 @@ export class TeamInformationPage implements OnInit {
   ngOnDestroy(): void {
     this.footballApiService.selectedTeam$.next(null);
   }
-  //#region   Public Methods
-
-  //#endregion
 
   //#region   Private Methods
   private getTeamInformation(id: number): void {
