@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">32% </span>
+                <span class="strong">20% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/25</span>
+                <span class='fraction'>5/25</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">44.44% </span>
+                <span class="strong">11.11% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/9</span>
+                <span class='fraction'>1/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">29.16% </span>
+                <span class="strong">16.66% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/24</span>
+                <span class='fraction'>4/24</span>
             </div>
         
             
@@ -143,13 +143,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -158,7 +158,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -167,7 +167,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -214,8 +214,8 @@ export class FootballApiService {
   constructor(private http: HttpClient) {}
 &nbsp;
   //#region   Public Methods
-  getTeamsByCompetition(id: number): Observable&lt;TeamsByCompetitionResponse&gt; {
-    return this.http.get&lt;TeamsByCompetitionResponse&gt;(`${this.domainUrl}/competitions/${id}/teams`).pipe(
+<span class="fstat-no" title="function not covered" >  getTeamsByCompetition(</span>id: number): Observable&lt;TeamsByCompetitionResponse&gt; {
+<span class="cstat-no" title="statement not covered" >    return this.http.get&lt;TeamsByCompetitionResponse&gt;(`${this.domainUrl}/competitions/${id}/teams`).pipe(</span>
       map(<span class="fstat-no" title="function not covered" >(r</span>esponse) =&gt; {
 <span class="cstat-no" title="statement not covered" >        response.teams.sort(sortByName);</span>
 <span class="cstat-no" title="statement not covered" >        return response;</span>
@@ -223,8 +223,8 @@ export class FootballApiService {
     );
   }
 &nbsp;
-  getTeamInfo(id: number): Observable&lt;TeamInformationResponse&gt; {
-    return this.http.get&lt;TeamInformationResponse&gt;(`${this.domainUrl}/teams/${id}`).pipe(
+<span class="fstat-no" title="function not covered" >  getTeamInfo(</span>id: number): Observable&lt;TeamInformationResponse&gt; {
+<span class="cstat-no" title="statement not covered" >    return this.http.get&lt;TeamInformationResponse&gt;(`${this.domainUrl}/teams/${id}`).pipe(</span>
       map(<span class="fstat-no" title="function not covered" >(r</span>esponse) =&gt; {
 <span class="cstat-no" title="statement not covered" >        response.squadByPosition = this.transformSquad(response.squad);</span>
 <span class="cstat-no" title="statement not covered" >        return response;</span>
@@ -232,8 +232,8 @@ export class FootballApiService {
     );
   }
 &nbsp;
-  getCompetitions(): Observable&lt;CompetionsResponse&gt; {
-    return this.http.get&lt;CompetionsResponse&gt;(`${this.domainUrl}/competitions?plan=TIER_ONE`).pipe(
+<span class="fstat-no" title="function not covered" >  getCompetitions(</span>): Observable&lt;CompetionsResponse&gt; {
+<span class="cstat-no" title="statement not covered" >    return this.http.get&lt;CompetionsResponse&gt;(`${this.domainUrl}/competitions?plan=TIER_ONE`).pipe(</span>
       map(<span class="fstat-no" title="function not covered" >(r</span>esponse) =&gt; {
 <span class="cstat-no" title="statement not covered" >        response.competitions.sort(sortByName);</span>
 <span class="cstat-no" title="statement not covered" >        return response;</span>
@@ -268,7 +268,7 @@ export class FootballApiService {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Mon Jan 10 2022 22:45:29 GMT-0600 (Central Standard Time)
+                at Tue Jan 11 2022 11:57:29 GMT-0600 (Central Standard Time)
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
