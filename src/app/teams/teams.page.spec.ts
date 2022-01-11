@@ -36,8 +36,6 @@ describe('TeamsPage', () => {
   });
 
   it('should get teams by competition', () => {
-    console.log('a==>');
-    console.log(component.competition$.value);
     expect(component.competition$.value.teams.length).toBe(0);
   });
 
